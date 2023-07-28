@@ -9,6 +9,11 @@ CYAN='\033[0;36m'
 GRAY='\033[0;37m'
 NC='\033[0m' # No Color
 
+
+CORE_LATEST_VERSION_URL="https://github.com/SagerNet/sing-box/releases/download/v1.3.0/sing-box-1.3.0-linux-amd64.tar.gz"
+INSTALLATION_PATH="/opt/sagernet"
+
+
 echo -e "${CYAN}---------------------- (‿ˠ‿) ---------------------- "
 
 
@@ -53,7 +58,7 @@ Install(){
     apt update --force-yes
     apt upgrade --force-yes
     apt install socat curl wget
-    curl -Lo /root/sb https://github.com/mralinp/sing-box-ui/releases/latest/download/sing-box-1.0.0-linux-amd64.tar.gz 
+    curl -Lo ${INSTALLATION_PATH}/singbox ${CORE_LATEST_VERSION_URL} && tar -xzf 
     tar -xzf /root/sb
     cp -f /root/sing-box-*/sing-box /root 
     rm -r /root/sb /root/sing-box-* 
