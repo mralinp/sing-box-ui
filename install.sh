@@ -58,10 +58,12 @@ Install(){
     apt update --force-yes
     apt upgrade --force-yes
     apt install socat curl wget
-    curl -Lo ${INSTALLATION_PATH}/singbox ${CORE_LATEST_VERSION_URL} && tar -xzf 
-    tar -xzf /root/sb
-    cp -f /root/sing-box-*/sing-box /root 
-    rm -r /root/sb /root/sing-box-* 
+    curl -Lo ${INSTALLATION_PATH}/singbox ${CORE_LATEST_VERSION_URL} && \
+    tar -xzf ${INSTALLATION_PATH}/singbox && \
+    mkdir -p ${INSTALLATION_PATH}/core && \
+    cp -f ${INSTALLATION_PATH}/singbox-*/* ${installation_path}/core && \
+    chmod +x ${INSTALLATION_PATH}/core/singbox
+    rm -rf ${INSTALLATION_PATH}/singbox*
     chown root:root /root/sing-box 
     chmod +x /root/sing-box
     curl -Lo /root/sing-box_config.json https://raw.githubusercontent.com/iSegaro/Sing-Box/main/sing-box_config.json
